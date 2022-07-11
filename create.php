@@ -139,6 +139,8 @@ require("header.php");
             echo '<script language="javascript">';
             echo 'alert("Ajout réussi")';
             echo '</script>';
+            // unlink("uploads/".$_FILES["imageProduit"]["name"]);
         }
     }
+
     ?>
