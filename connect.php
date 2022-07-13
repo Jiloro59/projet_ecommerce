@@ -27,7 +27,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
                             <div class="col-md-12">
-                                <input class="form-control" type="password" name="password" placeholder="Mot de passe" required>
+                                <input class="form-control" type="password" name="password" placeholder="Mot de passe" value="Azerty123" required>
                             </div>
 
                             <div class="form-button mt-3">

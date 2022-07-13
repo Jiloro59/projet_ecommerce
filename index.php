@@ -12,7 +12,6 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php
     foreach ($result as $value) {
     ?>
-        <a href="#">
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -24,11 +23,14 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     <p>Description :<?= $value['descriptionProduit'] ?></p>
                     <p>Prix : <?= $value['prixProduit'] ?> €</p>
                     <p>Stock : <?= $value['stockProduit'] ?></p>
-                    <a href="#">Ajouter au panier</a>
+                    <form value ="<?= $value['idProduit']?>">
+                        <input type="hidden" name="idPanier" value ="<?= $value['idProduit']?>">
+                        <button type="submit" action="panier.php">Ajouter au panier</button>
+                    </form>
+                    <a href="#">En savoir plus</a>
                 </div>
             </div>
         </div>
-        </a>
     <?php
     }
     ?>

@@ -56,6 +56,9 @@ if($_SESSION["connected"] == true){
             <li class="nav-item">
               <a class="nav-link active" href="disconnect.php">Déconnexion</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="panier.php">Panier</a>
+            </li>
           </ul>
 
         </div>
@@ -75,6 +78,9 @@ if($_SESSION["connected"] == true){
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="disconnect.php">Déconnexion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="panier.php">Panier</a>
             </li>
 
           </ul>
