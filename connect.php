@@ -1,7 +1,6 @@
 <?php
 require('db.php');
 require("header.php");
-session_start();
 // RECUPERATION DES DONNEES DE LA TABLE UTILISATEUR
 
 $sql = "SELECT * FROM utilisateur";
@@ -15,13 +14,12 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <!-- FORMULAIRE DE CONNEXION -->
-
+<h2>Connectez-vous pour accéder au site</h2>
     <div class="form-body">
         <div class="row">
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Connectez-vous</h3>
                         <form method="POST">
                             <div class="col-md-12">
                                 <input class="form-control" type="email" name="mail" placeholder="E-mail" required>
@@ -67,12 +65,18 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
             if (password_verify($password, $result['passwordUtilisateur'])) {
                 echo "<p>Connexion réussie</p>";
-                $_SESSION["nom"] = $result["nomUtilisateur"];
-                $_SESSION["prenom"] = $result["prenomUtilisateur"];
-                $_SESSION["mail"] = $result["mailUtilisateur"];
-                $_SESSION["adresse"] = $result["adresseUtilisateur"];
-                $_SESSION["admin"] = $result["statutUtilisateur"];
+                    $_SESSION['connected'] = true;
+                    $_SESSION['user'] = [
+                                            'id'=>$result['idUtilisateur'],
+                                            'nom'=>$result['nomUtilisateur'],
+                                            'prenom'=>$result['prenomUtilisateur'],
+                                            'mail'=>$result['mailUtilisateur'],
+                                            'adresse'=>$result['adresseUtilisateur'],
+                                            'statut'=>$result['statutUtilisateur'],
+                                        ];
                 header('Location: index.php');
+                exit;
+
             } else {
                 echo "<p>Connexion échouée, Veuillez recommencer</p>";
             }
@@ -85,6 +89,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             echo "Bonjour client";
         }
     }
+
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
